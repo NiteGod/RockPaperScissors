@@ -14,52 +14,95 @@
     //Play the game!
     function play(playerSelection, computerSelection){
       if(typeof playerSelection != 'string'){
-        return "That doesn't even make sense!  Try again!";
+        return [null, "That doesn't even make sense!  Try again!"];
       };
       playerSelection = playerSelection.toLowerCase();
       if(playerSelection == 'rock'){
         if(computerSelection == 'rock'){
-          return "It's a draw.";
+          return ['d', "It's a draw."];
         }
         else if(computerSelection == 'paper'){
-          return "You lose!  Paper covers Rock!";
+          return ['l', "You lose!  Paper covers Rock!"];
         }
         else{
-          return "You win!  Rock crushes Scissors!";
+          return ['w', "You win!  Rock crushes Scissors!"];
         }
       }
 
       else if(playerSelection == 'paper'){
         if(computerSelection == 'rock'){
-          return "You win!  Paper covers Rock!";
+          return ['w', "You win!  Paper covers Rock!"];
         }
         else if(computerSelection == 'paper'){
-          return "It's a draw.";
+          return ['d', "It's a draw."];
         }
         else{
-          return "You lose!  Scissors cuts Paper!";
+          return ['l', "You lose!  Scissors cuts Paper!"];
         }
       }
 
       else if(playerSelection == 'scissors'){
         if(computerSelection == 'rock'){
-          return 'You lose!  Rock crushes Scissors!';
+          return ['l', 'You lose!  Rock crushes Scissors!'];
         }
         else if(computerSelection == 'paper'){
-          return "You win!  Scissors cuts Paper!";
+          return ['w', "You win!  Scissors cuts Paper!"];
         }
         else{
-          return "It's a draw";
+          return ['d', "It's a draw."];
         }
       }
 
       else{
-        return 'You have to enter rock, paper, or scissors!  Try again...'
+        return [null, 'You have to enter rock, paper, or scissors!  Try again...'];
       }
 
     }
 
-    //Testing
+    function game(){
+      let playerWins = 0;
+      let cpuWins = 0;
+      let round = 0;
+
+      while(round < 5){
+        let playChoice = prompt("Round " + (round + 1) + " of 5.  Rock, Paper, or Scissors?");
+        let cpuChoice = computerPlay();
+        let outcome = play(playChoice, cpuChoice);
+        //Invalid choice.  Do nothing.
+        if(outcome[0] == null){}
+        //Player draw. Increase round.
+        else if(outcome[0] == 'd'){
+          round++;
+        }
+        //Player wins.  Increase round and player wins.
+        else if(outcome[0] == 'w'){
+          round++;
+          playerWins++;
+        }
+        //Computer wins.  Increase round and computer wins.
+        else if(outcome[0] == 'l'){
+          round++;
+          cpuWins++;
+        }
+
+        //Return result of the hand and win/loss record
+        alert("Player picked: " + playChoice + "\nComputer picked: " + cpuChoice + "\n" + outcome[1] + "\nYou have won " + playerWins + " and the computer has won " + cpuWins + " matches");
+      }
+      if(playerWins > cpuWins){
+        alert("Congrats!  You win!")
+      }
+      else if(playerWins < cpuWins){
+        alert("Too bad you're a loser!  Try again!")
+      }
+      else{
+        alert("It's a tie.  Well...that was pointless...")
+      }
+    }
+
+    //alert(play('rock', 'scissors'));
+    game();
+
+    /**
     let i = 10;
     while(i > 0){
       let cpuChoice = computerPlay();
@@ -77,6 +120,7 @@
     console.log(play('dicks', computerPlay()));
     console.log(play(0, computerPlay()));
     console.log(play(null, computerPlay()));
+    */
 
   </script>
 </body>
