@@ -11,6 +11,72 @@
       let hand = ['rock', 'paper', 'scissors'];
       return hand[Math.floor(Math.random() * 10 % 3)];
     }
+    //Play the game!
+    function play(playerSelection, computerSelection){
+      if(typeof playerSelection != 'string'){
+        return "That doesn't even make sense!  Try again!";
+      };
+      playerSelection = playerSelection.toLowerCase();
+      if(playerSelection == 'rock'){
+        if(computerSelection == 'rock'){
+          return "It's a draw.";
+        }
+        else if(computerSelection == 'paper'){
+          return "You lose!  Paper covers Rock!";
+        }
+        else{
+          return "You win!  Rock crushes Scissors!";
+        }
+      }
+
+      else if(playerSelection == 'paper'){
+        if(computerSelection == 'rock'){
+          return "You win!  Paper covers Rock!";
+        }
+        else if(computerSelection == 'paper'){
+          return "It's a draw.";
+        }
+        else{
+          return "You lose!  Scissors cuts Paper!";
+        }
+      }
+
+      else if(playerSelection == 'scissors'){
+        if(computerSelection == 'rock'){
+          return 'You lose!  Rock crushes Scissors!';
+        }
+        else if(computerSelection == 'paper'){
+          return "You win!  Scissors cuts Paper!";
+        }
+        else{
+          return "It's a draw";
+        }
+      }
+
+      else{
+        return 'You have to enter rock, paper, or scissors!  Try again...'
+      }
+
+    }
+
+    //Testing
+    let i = 10;
+    while(i > 0){
+      let cpuChoice = computerPlay();
+      let playChoice = computerPlay();
+      console.log('Player choice is: ' + playChoice);
+      console.log('Computer choice is: ' + cpuChoice);
+      console.log(play(playChoice, cpuChoice))
+      i--;
+    }
+
+    console.log("Does it take caps?");
+    console.log(play('ROCK', computerPlay()));
+
+    console.log("Does it take invalids?");
+    console.log(play('dicks', computerPlay()));
+    console.log(play(0, computerPlay()));
+    console.log(play(null, computerPlay()));
 
   </script>
 </body>
