@@ -5,7 +5,13 @@
 </head>
 <body>
   <script>
- 	// Your JavaScript goes here!
+
+    //Randomly return either rock, paper, or scissors
+ 	  function computerPlay(){
+      let hand = ['rock', 'paper', 'scissors'];
+      return hand[Math.floor(Math.random() * 10 % 3)];
+    }
+
   </script>
 </body>
 </html>
