@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>RockPaperScissors!</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Page Title</title>
 </head>
 <body>
 
-  <div class="rps_button">
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
+  <div class="play_area">
+    <input value="Rock" type ="submit" class="rps_button"></button>
+    <input value="Paper" type ="submit" class="rps_button"></button>
+    <input value="Scissors" type ="submit" class="rps_button"></button>
   </div>
 
   <div class="score_board">
-    <li>Player Score</li>
-    <li class="score p_score"></li>
-    <li>Computer Score</li>
-    <li class="score c_score"
+    <ul>
+      <li class="heading">Player Score</li>
+      <li clas="heading">Computer Score</li>
+    </ul>
+    <ul>
+      <li class="score">a</li>
+      <li class="score">b</li>
+    </ul>
   </div>
 
   <script>
