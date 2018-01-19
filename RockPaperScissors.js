@@ -4,6 +4,7 @@
   let hand = ['rock', 'paper', 'scissors'];
   return hand[Math.floor(Math.random() * 10 % 3)];
 }
+
 //Play the game!
 function play(playerSelection, computerSelection){
   //check for correct input type
@@ -58,9 +59,49 @@ function play(playerSelection, computerSelection){
 function addListeners(){
   const buttons = document.querySelectorAll('.rps_button');
   console.log(document.querySelectorAll('.rps_button'));
+
+  let playerWins = 0;
+  let cpuWins = 0;
+  let round = 0;
+
   buttons.forEach((input) => {
     input.addEventListener('click', (e) => {
-      return input.id;
+      let cpuChoice = computerPlay();
+      let outcome = play(input.id, cpuChoice);
+
+     //Invalid choice.  Do nothing.
+      if(outcome[0] == null){}
+      //Player draw. Increase round.
+      else if(outcome[0] == 'd'){
+        round++;
+      }
+      //Player wins.  Increase round and player wins.
+      else if(outcome[0] == 'w'){
+        round++;
+        playerWins++;
+      }
+      //Computer wins.  Increase round and computer wins.
+      else if(outcome[0] == 'l'){
+        round++;
+        cpuWins++;
+      }
+
+      console.log(cpuChoice + "\n" + outcome + "\n" + playerWins + "\n" + cpuWins + "\n" + round);
+
+      //Return result of the hand and win/loss record
+      //alert("Player picked: " + playChoice + "\nComputer picked: " + cpuChoice + "\n" + outcome[1] + "\nYou have won " + playerWins + " and the computer has won " + cpuWins + " matches");
+    //}
+/**
+    if(playerWins > cpuWins){
+      alert("Congrats!  You win!")
+    }
+    else if(playerWins < cpuWins){
+      alert("Too bad you're a loser!  Try again!")
+    }
+    else{
+      alert("It's a tie.  Well...that was pointless...")
+    }
+*/
     });
   });
 
@@ -71,32 +112,8 @@ function game(){
   let cpuWins = 0;
   let round = 0;
 
-  addListeners();
+  console.log(addListeners());
 
-  while(round < 5){
-    let playChoice = prompt("Round " + (round + 1) + " of 5.  Rock, Paper, or Scissors?");
-    let cpuChoice = computerPlay();
-    let outcome = play(playChoice, cpuChoice);
-    //Invalid choice.  Do nothing.
-    if(outcome[0] == null){}
-    //Player draw. Increase round.
-    else if(outcome[0] == 'd'){
-      round++;
-    }
-    //Player wins.  Increase round and player wins.
-    else if(outcome[0] == 'w'){
-      round++;
-      playerWins++;
-    }
-    //Computer wins.  Increase round and computer wins.
-    else if(outcome[0] == 'l'){
-      round++;
-      cpuWins++;
-    }
-
-    //Return result of the hand and win/loss record
-    alert("Player picked: " + playChoice + "\nComputer picked: " + cpuChoice + "\n" + outcome[1] + "\nYou have won " + playerWins + " and the computer has won " + cpuWins + " matches");
-  }
   if(playerWins > cpuWins){
     alert("Congrats!  You win!")
   }
