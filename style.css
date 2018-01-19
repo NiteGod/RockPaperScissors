@@ -10,6 +10,10 @@ body,html {
   font-family: sans-serif;
 }
 
+.play_area{
+  margin-top: 50px;
+}
+
 .rps_button{
   background-color: yellow;
   color: black;
@@ -18,12 +22,25 @@ body,html {
   width: 100px;
 }
 
-li{
-  display: inline;
-  margin: 0 25px 0 25px;
+.score_board{
 }
 
-.score{
-  text-align: center;
-  width: 200px;
+h2{
+  display: inline-block;
+  margin: 20px 20px 20px 20px;
+}
+
+p{
+  display: inline;
+  margin: 0 20px 0 20px;
+}
+
+.p_score{
+  margin-right: 150px;
+  position: relative;
+}
+
+.c_score{
+  margin-left: 100px;
+  position: relative;
 }
