@@ -6,10 +6,13 @@
 }
 //Play the game!
 function play(playerSelection, computerSelection){
+  //check for correct input type
   if(typeof playerSelection != 'string'){
     return [null, "That doesn't even make sense!  Try again!"];
   };
+  //change to lower case (no longer needed with gui)
   playerSelection = playerSelection.toLowerCase();
+  //Various hand outcomes
   if(playerSelection == 'rock'){
     if(computerSelection == 'rock'){
       return ['d', "It's a draw."];
@@ -52,10 +55,23 @@ function play(playerSelection, computerSelection){
 
 }
 
+function addListeners(){
+  const buttons = document.querySelectorAll('.rps_button');
+  console.log(document.querySelectorAll('.rps_button'));
+  buttons.forEach((input) => {
+    input.addEventListener('click', (e) => {
+      return input.id;
+    });
+  });
+
+}
+
 function game(){
   let playerWins = 0;
   let cpuWins = 0;
   let round = 0;
+
+  addListeners();
 
   while(round < 5){
     let playChoice = prompt("Round " + (round + 1) + " of 5.  Rock, Paper, or Scissors?");
