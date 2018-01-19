@@ -18,11 +18,8 @@ body,html {
   background-color: yellow;
   color: black;
   border-width: 5px;
-  margin: 0 10px 20px 10px;
+  margin: 0 10px 20px 15px;
   width: 100px;
-}
-
-.score_board{
 }
 
 h2{
@@ -37,10 +34,8 @@ p{
 
 .p_score{
   margin-right: 150px;
-  position: relative;
 }
 
 .c_score{
   margin-left: 100px;
-  position: relative;
 }
