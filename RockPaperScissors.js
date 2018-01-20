@@ -57,9 +57,10 @@ function play(playerSelection, computerSelection){
 }
 
 function addListeners(){
-  const buttons = document.querySelectorAll('.rps_button');
+  const rpsButtons = document.querySelectorAll('.rps_button');
   const pScoreDisplay = document.querySelector('.p_score');
   const cScoreDisplay = document.querySelector('.c_score');
+  const results = document.querySelector('.results');
   console.log(pScoreDisplay);
   console.log(cScoreDisplay);
 
@@ -67,7 +68,7 @@ function addListeners(){
   let cpuWins = 0;
   let round = 0;
 
-  buttons.forEach((input) => {
+  rpsButtons.forEach((input) => {
     input.addEventListener('click', (e) => {
       let cpuChoice = computerPlay();
       let outcome = play(input.id, cpuChoice);
@@ -90,6 +91,7 @@ function addListeners(){
 
       pScoreDisplay.innerHTML = cpuWins;
       cScoreDisplay.innerHTML = playerWins;
+      results.innerHTML = outcome[1];
 
       console.log(cpuChoice + "\n" + outcome + "\n" + playerWins + "\n" + cpuWins + "\n" + round);
 
