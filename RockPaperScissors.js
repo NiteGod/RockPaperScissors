@@ -58,7 +58,10 @@ function play(playerSelection, computerSelection){
 
 function addListeners(){
   const buttons = document.querySelectorAll('.rps_button');
-  console.log(document.querySelectorAll('.rps_button'));
+  const pScoreDisplay = document.querySelector('.p_score');
+  const cScoreDisplay = document.querySelector('.c_score');
+  console.log(pScoreDisplay);
+  console.log(cScoreDisplay);
 
   let playerWins = 0;
   let cpuWins = 0;
@@ -68,7 +71,6 @@ function addListeners(){
     input.addEventListener('click', (e) => {
       let cpuChoice = computerPlay();
       let outcome = play(input.id, cpuChoice);
-
      //Invalid choice.  Do nothing.
       if(outcome[0] == null){}
       //Player draw. Increase round.
@@ -85,6 +87,9 @@ function addListeners(){
         round++;
         cpuWins++;
       }
+
+      pScoreDisplay.innerHTML = cpuWins;
+      cScoreDisplay.innerHTML = playerWins;
 
       console.log(cpuChoice + "\n" + outcome + "\n" + playerWins + "\n" + cpuWins + "\n" + round);
 
